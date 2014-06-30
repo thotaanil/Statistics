@@ -1,0 +1,647 @@
+How do you assess the results of a logistic regression analysis?
+You can use different methods to assess how good a logistic model is.
+a. Concordance – This tells you about the ability of the model to discriminate between the event happening and not happening.
+b. Lift – It helps you assess how much better the model is compared to random selection.
+c. Classification matrix – helps you look at the false positives and true negatives.
+
+The studentized residual is the residual divided by its standard error, Studentized residuals follow a t distribution and can be used to identify outlying or extreme observations. Many observations having absolute studentized residuals greater than 2 may indicate an inadequate model.
+
+Cook’s D is a measure of the change in the predicted values upon deletion of that observation from the data set; hence, it measures the influence of the observation on the estimated regression coefficients.
+
+If a model fits well, the plot of residuals against predicted values should exhibit no apparent trends. A trend in the residuals would indicate nonconstant variance in the data. A fan-shaped trend may indicate the need for a variance stabilizing transformation. A curved trend (such as a semi-circle) may indicate the need for a quadratic term in the model.
+
+Durbin-Watson statistic to test whether or not the errors have first order autocorrelation. (This test is appropriate only for time series data.) The sample autocorrelation of the residuals is also produced.
+
+Jp, the estimated mean square error of prediction for each model selected assuming that the values of the regressors are fixed and that the model is correct. The Jp statistic is also called the final prediction error (FPE) by Akaike
+Tolerance for a variable is defined as 1-R2, where R2 is obtained from the regression of the variable on all other regressors in the model. Variance inflation is the reciprocal of tolerance.
+
+Regression and correlation have some fundamental differences that are worth mentioning. In regression analysis there is an asymmetry in the way the dependent and explanatory variables are treated. The dependent variable is assumed to be statistical, random, or stochastic, that is, to have a probability distribution. The explanatory variables, on the other hand, are assumed to have fixed values
+
+In correlation analysis, on the other hand, we treat any (two) variables symmetrically; there is no distinction between the dependent and explanatory variables
+
+A time series is a set of observations on the values that a variable takes at different times. Such data may be collected at regular time intervals, such as daily (e.g., stock prices, weather reports), weekly (e.g., money supply figures), monthly [e.g., the unemployment rate,the Consumer Price Index (CPI)], quarterly (e.g., GDP), loosely speaking a time series is stationary if its mean and variance do not vary ystematically over time
+
+The class of generalized linear models is an extension of traditional linear models that allows the mean of a population to depend on a linear predictor through a nonlinear link function and allows the response probability distribution to be any member of an exponential family of distributions.
+
+The number of marketing channels has exploded to the point it’s almost impossible to keep up let alone use an “eye-ball” approach for determining which channels are the most effective and efficient. Hence the increased emphasis on developing marketing mix models for evaluating the various channels.  Organizations use Marketing Mix Models to quantify the impact of various marketing activities on revenue and determine effectiveness and ROI for each marketing activity.  Marketing mix modes are ideal for answering questions such as:
+•	What happens if the economy changes by X?
+•	What happens if we reduce/increase the marketing budget by Y?
+•	What happens if the competition adds Z to their media spend or reduces their price?
+•	What if we have to hold our touch points to the current mix, what is the optimal mix of these?
+•	What is the optimal mix for our current budget?
+Marketing mix modeling takes statistical analysis such as multivariate regressions on sales and marketing time series data to estimate and forecast the impact of various marketing tactics on sales.  Once you have the statistics to create the model you can use these equations to figure out how to optimize your mix, this is known as Marketing Mix Optimization.  What does it take to develop a solid marketing mix model? First and foremost, requires good data and strong analytical skills.  A good model accounts for direct as well as indirect effects and take things outside of your company (such as the time of year, interest rates, exchange rates, gas prices, elections, competition, etc.) into account.  You may find it prudent to partner with your finance organization to co-author the model to as a well to generate buy-in from the sales and leadership team. 
+Build a marketing mix model that will support your overall organizational outcomes, marketing objectives, and metrics and performance targets.  Optimizing a mix that will not enable you to achieve your outcomes and objectives may make your more efficient but will not make you more effective.  If you are not meeting your performance targets or industry benchmarks, you may want to revisit your execution before you adjust your mix and spend. 
+The 8 steps are the essential building blocks for developing a model:
+1.	Determine what data is going to go into your model and build a prototype
+2.	Test the predictive ability of the model on a hold out sample
+3.	Refit using all the data and predict the future- remember to account for indirect effects and things out of your control in the model
+4.	Compare actual to forecast sale performance and determine incremental revenue
+5.	Apply financial data and determine ROI
+6.	Model the influence of individual factors
+7.	Simulate the impact of different marketing activities
+8.	Develop and deploy the optimal marketing mix
+Plan to refresh your models quarterly and rebuild them at least once a year. Things such as the your data quality, the breath of internal and external data, the granularity of your data, the accuracy of your historical marketing data, the robustness of your statistical functionality, and the technical architecture to support the model construction all impact the quality of your model.
+1.	Linearity assumptions:
+a.	Linearity of the regression function  ( scatter plot : residual vs X)
+b.	Independence of errors ( sequence plot)
+c.	Constant variance of errors (residual vs X)
+d.	Normality of errors (Histogram of residuals , qq plot, Normal probability plot)
+e.	These b, c, d together can say : errors follows normal distribution with mean 0 and same variance
+2.	When we transform the variables
+a.	When the basic assumptions(above)  are not satisfied then go for transformations 
+3.	What is R^2
+a.	Proportion of total variation in the response variable which has been explained by the explanatory variables. 
+b.	Gives some information about the goodness of fit about the model
+4.	What is adjusted R^2
+a.	 Adjusted R^2 is the modification of R^2 that adjust s the no of explanatory variables in the model. Unlike R^2.
+b.	Adjusted R^2 increases only if the new variables improves the model, more than would be expected by chance.  But not R^2
+c.	Adjusted R^2 can be negative, will always less than or equal to the R^2
+5.	What are the measures of checking model goodness of fit
+a.	R^2 and adjusted R^2
+b.	Each variable significance by using t-test with the p-value cut off 0.05
+6.	Model selection measures:
+a.	Mallows Cp criterion ( it should be small and approximately equal to no of explanatory variables) that is E (Cp) = P
+b.	AIC and SBC: don’t worry about formulas here: prefer small values of AIC and SBC. Since these are the functions of errors. When error is less then AIC and SBC are also less.
+c.	PRESS : small 
+7.	Outlier removal analysis: influential observations
+a.	One way can use sigma method: that is removing the observations which are above M+3*SD or M-3*SD. Again selecting this cut off depends on the data
+b.	Leverage > 2p/n, DFFITS and COOK’s distance
+8.	Multi co linearity:
+a.	Variables are highly correlated
+b.	Poor value of R^2 
+c.	Estimates will be unstable
+i.	Can be detected by using  correlation matrix
+ii.	Vif and tolerance : in general industry  cut off is 10 for vif
+iii.	Have to know the functionality of the vif
+9.	What are the methods of selecting the best  variables into the model:
+a.	Forward
+b.	Backward
+c.	Stepwise ( read all these how it works) 
+d.	Stepwise is the most commonly used one in the industry
+10.	What is the difference between binomial and negative binomial distribution?
+11.	Why are R2 and F so large for models without a constant?
+A regression without a constant implies that the regression line should run through the origin, i.e., the point where both the response variable and predictor variable equal zero.
+12.	What is the odds ratio? ( see the definition u told odds definition )
+An odds ratio (OR) is a measure of association between an exposure and an outcome. The OR represents the odds that an outcome will occur given a particular exposure, compared to the odds of the outcome occurring in the absence of that exposure. 
+Odds ratios are used to compare the relative odds of the occurrence of the outcome of interest (e.g. disease or disorder), given exposure to the variable of interest (e.g. health characteristic, aspect of medical history). The odds ratio can also be used to determine whether a particular exposure is a risk factor for a particular outcome, and to compare the magnitude of various risk factors for that outcome.
+•	OR=1 Exposure does not affect odds of outcome
+•	OR>1 Exposure associated with higher odds of outcome
+•	OR<1 Exposure associated with lower odds of outcome
+
+13.	What are the differences between one-tailed and two-tailed tests?
+When you conduct a test of statistical significance, whether it is from a correlation, an ANOVA, a regression or some other kind of test, you are given a p-value somewhere in the output.  If your test statistic is symmetrically distributed, you can select one of three alternative hypotheses. Two of these correspond to one-tailed tests and one corresponds to a two-tailed test.  However, the p-value presented is (almost always) for a two-tailed test.  But how do you choose which test?  Is the p-value appropriate for your test? And, if it is not, how can you calculate the correct p-value for your test given the p-value in your output
+14.	What is null hypothesis and alternative hypothesis
+The null hypothesis reflects that there will be no observed effect for our experiment. The alternative or experimental hypothesis reflects that there will be an observed effect for our experiment. A null hypothesis is a mathematical based hypothesis that"s tested for possible rejections under an assumption this is going to be true.
+15.	What is the coefficient of variation?
+A coefficient of variation (CV) can be calculated and interpreted in two different settings: analyzing a single variable and interpreting a model.  The standard formulation of the CV, the ratio of the standard deviation to the mean, applies in the single variable setting. In the modeling setting, the CV is calculated as the ratio of the root mean squared error (RMSE) to the mean of the dependent variable. In both settings, the CV is often presented as the given ratio multiplied by 100. The CV for a single variable aims to describe the dispersion of the variable in a way that does not depend on the variable's measurement unit. The higher the CV, the greater the dispersion in the variable. The CV for a model aims to describe the model fit in terms of the relative sizes of the squared residuals and outcome values.  The lower the CV, the smaller the residuals relative to the predicted value.  This is suggestive of a good model fit. 
+16.	What false positive and false negative rate? ( need explain in general)
+A false negative is a test result that indicates a person does not have a disease or condition when the person actually does have it, a false-positive test result indicates that a person has a specific disease or condition when the person actually does not have it.
+ 	They say you did	They say you didn't
+You really did	They are right!	"False Negative"
+You really didn't	"False Positive"	They are right!
+• Airport Security: a "false positive" is when ordinary items such as keys or coins get mistaken for weapons (machine goes "beep")
+• Quality Control: a "false positive" is when a good quality item gets rejected, and a "false negative" is when a poor quality item gets accepted
+• Antivirus software: a "false positive" is when a normal file is thought to be a virus
+• Medical screening: low-cost tests given to a large group can give many false positives (saying you have a disease when you don't), and then ask you to get more accurate tests.
+
+17.	When we use logistic regression?( when Y is binary)
+When a binary outcome variable is modeled using logistic regression, it is assumed that the logit transformation of the outcome variable has a linear relationship with the predictor variables
+18.	When we go for GLM? ( if errors do not follow normal distribution)
+19.	What is the distribution of dependant variable in the logistic regression? (Bernoulli )
+20.	What tests that check the significance of the variables in the logistic regression?( Wald test)
+21.	What is the concordance and discordance how this is useful in logistic regression?
+22.	What is the specificity and sensitivity?
+23.	What is the relative risk and odds ratio?
+24.	Which method is used in logistic regression to fit the model?
+25.	What is the problem if we use binary variable in linear regression?
+26.	Why don’t we add error term in the logistic model?
+27.	What is logit?
+28.	What are the measures of to see logistic model goodness of fit? 
+a.	Maximum likelihood analysis
+b.	Significance of each variable by using wald test
+c.	Concordance ( should be high) and discordant (should be low)
+29.	Is multi co linearity creates any problem in logistic. If so then how it will be removed?
+a.	Yes. In every model building it creates problem.
+b.	Same by using vif we can remove.( note when u r  applying vif we will not use response variable)
+c.	Or by looking correlations also we can remove.
+30.	What is the bays theorem?
+31.	What is clustering?  Where it will be useful?
+32.	What are the clustering methods? ( proc cluster And proc fastclus)
+33.	How you select a random sample in SAS? Ranuni function 
+34.	
+
+SAS	
+DLM=
+The dlm= option can be used to specify the delimiter that separates the variables in your raw data file. For example, dlm=','indicates a comma is the delimiter (e.g., a comma separated file, .csv file). Or, dlm='09'x indicates that tabs are used to separate your variables (e.g., a tab separated file). 
+DSD 
+The dsd option has 2 functions. First, it recognizes two consecutive delimiters as a missing value. For example, if your file contained the line 20,30,,50 SAS will treat this as 20 30 50 but with the dsd option SAS will treat it as 20 30 . 50 , which is probably what you intended. Second, it allows you to include the delimiter within quoted strings. For example, you would want to use the dsd option if you had a comma separated file and your data included values like "George Bush, Jr.". With the dsd option, SAS will recognize that the comma in "George Bush, Jr." is part of the name, and not a separator indicating a new variable. 
+FIRSTOBS=
+This option tells SAS what on what line you want it to start reading your raw data file. If the first record(s) contains header information such as variable names, then set firstobs=n where n is the record number where the data actually begin. For example, if you are reading a comma separated file or a tab separated file that has the variable names on the first line, then use firstobs=2 to tell SAS to begin reading at the second line (so it will ignore the first line with the names of the variables). 
+MISSOVER 
+This option prevents SAS from going to a new input line if it does not find values for all of the variables in the current line of data. For example, you may be reading a space delimited file and that is supposed to have 10 values per line, but one of the line had only 9 values. Without the missover option, SAS will look for the 10th value on the next line of data. If your data is supposed to only have one observation for each line of raw data, then this could cause errors throughout the rest of your data file. If you have a raw data file that has one record per line, this option is a prudent method of trying to keep such errors from cascading through the rest of your data file. 
+OBS= 
+Indicates which line in your raw data file should be treated as the last record to be read by SAS. This is a good option to use for testing your program. For example, you might use obs=100 to just read in the first 100 lines of data while you are testing your program. When you want to read the entire file, you can remove the obs= option entirely. 
+A typical infile statement for reading a comma delimited file that contains the variable names in the first line of data would be:
+INFILE "test.txt" DLM=',' DSD MISSOVER FIRSTOBS=2 ;
+Input multiple raw data files in SAS
+
+filename year ('d:\quarter1.dat' 'd:\quarter2.dat' 'd:\quarter3.dat' 'd:\quarter4.dat');
+data temp;
+infile year;
+input quarter sales tax expenses payroll;
+run;
+proc print data = temp;
+run;
+1.	Proc means
+2.	Proc corr
+3.	Proc reg
+4.	Proc logistic
+5.	Proc univariate 
+6.	Proc sort 
+7.	Proc summary  ( note this will not run without either the print option or the output statement)
+8.	Merge statement ( this question was asked by every campany)
+9.	Proc Sql
+
+1. What is difference between Bayesian and Frequentist?
+ Bayesians condition on the data actually observed and considers the probability distribution on the hypotheses;   Frequentists condition on a hypothesis of choice and consider the probability distribution on the data, whether observed or not.
+
+2. What is likelihood?
+ The probability of some observed outcomes given a set of parameter values is regarded as the likelihood of the set of parameter values given the observed outcomes.
+
+3. What is p-value and give an example?
+ In statistical significance testing, the p-value is the probability of obtaining a test statistic at least as extreme as the one that was actually observed, assuming that the null hypothesis is true. If the p-value is less than 0.05 or 0.01, corresponding respectively to a 5% or 1% chance of rejecting the null hypothesis when it is true (Type I error).
+Example: Suppose that the experimental results show the coin turning up heads 14 times out of 20 total flips
+ * null hypothesis (H0): fair coin;
+ * observation O: 14 heads out of 20 flips; and
+ * p-value of observation O given H0 = Prob(≥ 14 heads or ≥ 14 tails) = 0.115.
+ The calculated p-value exceeds 0.05, so the observation is consistent with the null hypothesis — that the observed result of 14 heads out of 20 flips can be ascribed to chance alone — as it falls within the range of what would happen 95% of the time were this in fact the case. In our example, we fail to reject the null hypothesis at the 5% level. Although the coin did not fall evenly, the deviation from expected outcome is small enough to be reported as being "not statistically significant at the 5% level".
+
+4. What is sampling? How many sampling methods?
+ Sampling is that part of statistical practice concerned with the selection of an unbiased or random subset of individual observations within a population of individuals intended to yield some knowledge about the population of concern.
+ There are four sampling methods: Simple Random (purely random), Systematic (every kth member of population), cluster (population divided into groups or clusters)
+ and stratified (divided by exclusive groups or strata, sample from each group) samplings.
+
+5. What is the possibility to win lottery game 649?
+ Pick 6 numbers out of 49 possible. The number of 6-number combination from  a pool of of 49 numbers are: 
+ 49!/[(49-6)!6!]=13,983,816
+ .e We only have one of 14 million chance.
+1) Null hypothesis:
+ The null hypothesis (denote by H0 ) is a statement about the value of  a population parameter (such as mean), and it must contain the condition of equality and must be written with the symbol =, ≤, or ≤.
+
+2). Alternative hypothesis 
+ The Alternative hypothesis (denoted by H1 ) is the statement that must be true if the null hypothesis is false.
+
+3) Conclusion	 a) Fail to reject the null hypothesis	 b) Reject the null hypothesis.
+4) Significance level 
+ The probability of rejecting the null hypothesis when it is called  the significance level α , and very common choices are  α = 0.05 and α = 0.01
+
+5) Example:  A sample of data for body temperature (n=106, x̄=98.20°, s =0.62),  for a 0.05 significance level, test the claim that the mean body temperature of health adults is equal to 98.6°F.
+
+Solution: We have:  H0 : μ=98.6 (original claim) H1  : μ≠98.6  As n>30, the central limit theorem indicates that the distribution of sample means can be approximated by a normal distribution  z= (x̄ - μ)/ (σ/√n) = (98.20-98.6)/(0.62/√106) = -6.64 
+ The test is two-sided because a sample mean significantly less than or greater than 98.6 is strong evidence against the null hypothesis that μ=98.6. α/2 = 0.025, the left critical z value = -1.96, right z critical value = 1.96. For z between -1.96 and 1.96, we fail to reject H0.
+ As z = -6.64, we reject the reject H0 i.e. we reject the hypothesis that the mean body temperature of health adults is equal to 98.6°F.
+
+8. What is Central Limit Theorem?
+As the sample size increases, the sampling distribution of sample means approaches a normal distribution 
+ If all  possible random samples of size n are selected from a population with mean μ and standard deviation σ, the mean of the sample means is denoted by μ x̄ , so  μ x̄  = μ the standard deviation of the sample means is: σ x̄  = σ⁄ n
+
+Example:  Given that the population of men has normally distributed weights, with a mean of 173 lb and a standard deviation of 30 lb, find the probability that
+ a. if 1 man is randomly selected, his weight is greater than 180 lb.
+ b. if 36 different men are randomly selected, their mean weight is greater than 180 lb.
+
+Solution: a) z = (x - μ)/ σ = (180-173)/30 = 0.23  For normal distribution P(Z>0.23) = 0.4090
+ b) σ x̄  = σ/n = 20/√ 36 = 5  z= (180-173)/5 = 1.40  P(Z>1.4) = 0.0808 
+
+9. Describe Binomial Probability Formula?
+P(x)= p x  q  n-x n!/[(n-x)!x!]
+ where x = number of trials   x = number of successes among n trials  p = probability of success in any one trial  q = 1 -p
+
+Example: Find the probability of getting 3 left-handed students in a class of 15 students, given that 10% of us are left-handed.
+Solution: here n = 15, x=3, p =0.1, q =0.9  p(3) = 0.129, the probability is 12.9%
+
+02041016853- SIKANDER
+
+
+Effectiveness
+Effectiveness is the level of results from the actions of employees and managers. Employees and managers who demonstrate effectiveness in the workplace help produce high-quality results. Take, for instance, an employee who works the sales floor. If he’s effective, he’ll make sales consistently. If he’s ineffective, he’ll struggle to persuade customers to make a purchase. Companies measure effectiveness often by conducting performance reviews. The effectiveness of a workforce has an enormous impact on the quality of a company’s product or service, which often dictates a company’s reputation and customer satisfaction.
+Efficiency
+Efficiency in the workplace is the time it takes to do something. Efficient employees and managers complete tasks in the least amount of time possible with the least amount of resources possible by utilizing certain time-saving strategies. Inefficient employees and managers take the long road. For example, suppose a manager is attempting to communicate more efficiently. He can accomplish his goal by using email rather than sending letters to each employee. Efficiency and effectiveness are mutually exclusive. A manager or employee who's efficient isn’t always effective and vice versa. Efficiency increases productivity and saves both time and money.
+Summary:
+1.Efficiency means doing the things right whereas Effectiveness is about doing the right things.
+2.Efficiency focuses on the process or ‘means’ whereas Effectiveness focuses on the end.
+3.Efficiency is restricted to the present state whereas effectiveness involves thinking long term.
+4.Organizations have to be both effective and efficient in order to be successful.
+1. Descriptive - the use of data to find out what happened in the past (I would add:  what is happening now)
+    - data modeling, trend reporting, regression analysis
+2. Predictive -  the use of date to find out what could happen in the future      - data mining, predictive modeling 
+3. Prescriptive - the use of data to prescribe the best course of action for the future
+     - optimization, simulation
+The way of usage of Analytics depends on the data maturity of the organizations employing it. There are:
+Descriptive: The Traditional BI which analyses the historical data and tell you “What happened?”, “How many customers we lost?”, “Why is it so?”. The reactive way of analytics uses KPIs, Dashboards, charts and Scorecards to tell you the story.
+Predictive: It goes a step after Descriptive Analytics. After analysis the historical data, we build Statistical Models to predict the future with an agreeable fuzziness – We predict the future from the past. It answers questions like “What will happen next month?”, “how many customers will churn?”, “What if we change pricing?” etc. Besides Statistical modeling, we use Data mining, forecasting and predictive modeling here.
+Prescriptive: Analytics makes sense only when it is combined with Business Strategies and goals and it helps enterprises to achieve them.
+Prescriptive Analytics uses advanced statistical optimization & simulation techniques with inputs & constraints to recommend what actions to be taken. This answers questions like “What is the best course of action to avoid the situation?”, “What action can we take to prevent customers from churning out?”
+There are enterprises that employ these 3 different levels of analytics. The sooner the enterprises climb the level to prescriptive, the better.
+
+1.	What is inferential Statistics deal with?
+ It’s just making conclusions and generalizations about population/s from our sample data. 
+2.	What are the assumptions of regression?
+ Quantitative models always rest on assumptions about the way the world works, and regression models are no exception. There are four principal assumptions which justify the use of linear regression models for purposes of prediction:
+
+i.	Linearity of the relationship between dependent and independent variables
+ii.	Independence of the errors (no serial correlation)
+iii.	homoscedasticity (constant variance) of the errors
+1)	Versus time
+2)	Versus the predictions (or versus any independent variable)
+iv.	Normality of the error distribution.
+
+If any of these assumptions is violated (i.e., if there is nonlinearity, serial correlation, heteroscedasticity, and/or non-normality), then the forecasts, confidence intervals, and economic insights yielded by a regression model may be (at best) inefficient or (at worst) seriously biased or misleading.
+3.	How do you detect the Linearity assumption and what statistical techniques do you use? What is the effect of non- linearity? How do you fix it?
+Violations of linearity are extremely serious--if you fit a linear model to data which are nonlinearly related, your predictions are likely to be seriously in error, especially when you extrapolate beyond the range of the sample data. How to detect: nonlinearity is usually most evident in a plot of the observed versus predicted values or a plot of residuals versus predicted values, which are a part of standard regression output. The points should be symmetrically distributed around a diagonal line in the former plot or a horizontal line in the latter plot. Look carefully for evidence of a "bowed" pattern, indicating that the model makes systematic errors whenever it is making unusually large or small predictions.
+How to fix: consider applying a nonlinear transformation to the dependent and/or independent variables--if you can think of a transformation that seems appropriate. For example, if the data are strictly positive, a log transformation may be feasible. Another possibility to consider is adding another regressor which is a nonlinear function of one of the other variables. For example, if you have regressed Y on X, and the graph of residuals versus predicted suggests a parabolic curve, then it may make sense to regress Y on both X and X^2 (i.e., X-squared). The latter transformation is possible even when X and/or Y have negative values, whereas logging may not be.
+4.	How do you detect the independence of the error? What is the effect of serial correlation? How do you fix it?
+They are several methods to detect linearityVisual inspection of data plots, skew, kurtosis, and P-P plots give researchers information about normality, and Kolmogorov-Smirnov tests provide inferential statistics on normality.
+5.	What is purpose of transformations?
+Transformation is the conversion of a data set into a transformed data set by the application of a function. The statistical purpose of transformation is to produce a transformed data set that better conforms to the requirements of a statistical procedure.
+Major aims of applying transformation of data in statistics are 
+•	to bring data closer to normal distribution, 
+•	to reduce relationship between mean and variance, 
+•	to reduce the influence of outliers, to improve linearity in regression, 
+•	to reduce interaction effects, 
+•	to reduce skewness and kurtosis
+
+6.	What is the Multicollinearity? What procedure do you use to identify the Multicollinearity?
+Multicollinearity exists whenever two or more of the predictors in a regression model are moderately or highly correlated. It is the the undesirable situation where the correlations among the independent variables are strong.
+Multicollinearity increases the standard errors of the coefficients. In other words, multicollinearity misleadingly inflates the standard errors. Thus, it makes some variables statistically insignificant while they should be otherwise significant.
+
+There are two types of multicollinearity:
+•	Structural multicollinearity is a mathematical artifact caused by creating new predictors from other predictors — such as, creating the predictor x2 from the predictor x.
+•	Data-based multicollinearity, on the other hand, is a result of a poorly designed experiment, reliance on purely observational data, or the inability to manipulate the system on which the data are collected.
+To check for multicollinearity, some of the signs would be:
+•	Regression coefficients change drastically when adding or deleting an X variable.
+•	A regression coefficient is negative when theoretically Y should increase with increasing values of that X variable, or the regression coefficient is positive when theoretically Y should decrease with increasing values of that X variable.
+•	None of the individual coefficients has a significant t statistic, but the overall F test for fit is significant.
+•	A regression coefficient has a nonsignificant t statistic, even though on theoretical grounds that X variable should provide substantial information about Y.
+•	High pairwise correlations between the X variables. (But three or more X variables can be multicollinear together without having high pairwise correlations.)
+•	Tolerance is a measure of collinearity reported by most statistical programs such as SPSS; the variable’s tolerance is 1-R2. A small tolerance value indicates that the variable under consideration is almost a perfect linear combination of the independent variables already in the equation and that it should not be added to the regression equation.
+•	The Variance Inflation Factor (VIF) measures the impact of collinearity among the variables in a regression model. The Variance Inflation Factor (VIF) is 1/Tolerance, it is always greater than or equal to 1. Values of VIF that exceed 10 are often regarded as indicating multicollinearity, but in weaker models values above 2.5 may be a cause for concern.
+
+7.	How does the coefficient of determination put the interpretation of correlation coefficients into perspective? 
+8.	Can be Z- score value would be negative? if negative what does this imply ?
+Yes, the Z-score can be negative. A negative Z-score means that the original score was below the mean. It indicates a value to the left of the mean.
+9.	What is the difference between a parameter and a statistic?
+•	A parameter is a numerical value that states something about the entire population being studied. For example, we may want to know the mean wingspan of the American bald eagle. This is a parameter, because it is describing all of the population.
+•	A statistic is a numerical value that states something about a sample. To extend the example above, we could catch 100 bald eagles and then measure the wingspan of each of these. The mean wingspan of the 100 eagles that we caught is a statistic.
+
+10.	What is the difference between sample variation and sampling variance?
+Ans: Sample variance refers to variation of observations (the data points) in single sample. Sampling variance refers to variation of a particular statistic (e.g. the mean) calculated in sample, if to repeat the study (sample-creation/data-collection/statistic-calculation) many times
+11.	In what scenario you will use mode as Measure of central tendency?
+The mode is the least used of the measures of central tendency and can only be used when dealing with nominal data. For this reason, the mode will be the best measure of central tendency (as it is the only one appropriate to use) when dealing with nominal data. The mean and/or median are usually preferred when dealing with all other types of data, but this does not mean it is never used with these data types.
+
+12.	What is Central Limit Theorem?
+ As the sample size increases, the sampling distribution of sample means approaches a normal distribution
+If all  possible random samples of size n are selected from a population with mean μ and standard deviation σ, the mean of the sample means is denoted by μ x̄ , so μ x̄ = μ
+the standard deviation of the sample means is:σ x̄ = σ⁄ n
+
+13.	What is the difference between logistic regression and discriminate analysis?
+•	Logistic regression allows one to predict a discrete outcome such as group membership from a set of variables that may be continuous, discrete, dichotomous, or a mix.
+•	The goal of the discriminant function analysis is to predict group membership from a set of predictors
+•	The logistic regression may be better suitable for cases when the dependant variable is dichotomous such as Yes/No, Pass/Fail, Healthy/Ill, life/death, etc., while the independent variables can be nominal, ordinal, ratio or interval. 
+•	discriminant analysis might be better suited when the dependant variable has more than two groups/categories.
+•	However, the real difference in determining which one to use depends on the assumptions regarding the distribution and relationship among the independent variables and the distribution of the dependent variable.
+
+14.	What are the assumption logistic regression holds?
+•	Logistic regression assumes linearity of independent variables and log odds
+•	The model should have little or no multicollinearity
+•	Error terms need to be independent
+•	Explanatory variables should not be highly correlated with one and another. This leads to estimation problems
+•	Large data sizes are required with sufficient numbers in categories of the response variable
+•	If more explanatory variables are included, the sample size needs to increase too
+•	Subject knowledge needs to be taken into consideration and not just the statistical results
+•	The model should be fitted correctly.  Neither over fitting nor under fitting should occur.
+
+15.	How do you check the model fit for logistic regression?
+The steps involved in making sure that the given model is useful are:
+•	Carrying out statistical tests of the significance of the coefficients in order to check the importance of each of the explanatory variables- The Wald Statistic, Likelihood Ratio Test, 
+•	Checking the overall goodness of fit of the model: Goodness of fit is generally associated with the extent to which the model maps the response variable. It is measured by the difference between the predicted and the observed values. 
+o	The Hosmer-Lemeshow Test is used too for this
+o	Checking usefulness of the explanatory variables- R2 in logistic regression
+•	Checking the ability of the model to distinguish between the two categories of the response variable: The ability of a logistic regression model to distinguish between the two categories of the outcome variable can be represented by AUROC- area under the receiver operating characteristic curve.
+•	Validation of the model: to check the validity of the model, the goodness of fit and the discrimination tests should be used on a different data set from the initial one.
+
+16.	How do fix the threshold value in logistic regression?
+
+
+17.	How do you rank the independent variable based on the importance to the model? What are all the techniques to identify the order of importance?
+18.	Which graph display confidence intervals? 
+Ans:  Error bar charts 
+19.	What is confidence interval, R2?
+•	A confidence interval gives an estimated range of values which is likely to include an unknown population parameter, the estimated range being calculated from a given set of sample data
+•	A confidence interval is a range of values that describes the uncertainty surrounding an estimate. Confidence intervals are one way to represent how "good" an estimate is.
+•	In statistics, the coefficient of determination R2 is the proportion of variability in a data set that is accounted for by a statistical model. In this definition, the term "variability" is defined as the sum of squares. 
+
+20.	What are all the time series techniques do you aware?
+1. Descriptive Methods - time sequence plots, autocorrelation functions, partial autocorrelation functions, periodograms, and cross-correlation functions are all important tools for characterizing time series data.
+2. Smoothing - a variety of smoothers are available to estimate the underlying trend in a time series.
+3. Seasonal Decomposition - decomposes time series data into trend, cycle, seasonal, and irregular components, and returns seasonally adjusted data if desired.
+4. Forecasting - creation of forecasts beyond the end of the data, using trend models, moving averages, exponential smoothers, or ARIMA models.
+21.	 What is a cluster?
+In statistics clusters are groups in which cases, data, or objects (events, people, things, etc.) are sub-divided such that the items in a cluster are very similar (but not identical) to one another and very different from the items in other clusters. It helps to reveal associations, patterns, relationships, and structures in masses of data.
+
+22.	What is factor analysis? What is the difference between Factor and PCA?
+Factor analysis attempts to identify underlying variables, or factors, that explain the pattern of correlations within a set of observed variables. Factor analysis is often used in data reduction to identify a small number of factors that explain most of the variance that is observed in a much larger number of manifest variables.
+•	Factor analysis is a correlational technique to determine meaningful clusters of shared variance.
+•	Factor analysis begins with a large number of variables and then tries to reduce the interrelationships amongst the variables to a few numbers of clusters or factors.
+•	Factor analysis finds relationships or naturalconnections where variables are maximally correlated with one another and minimally correlated with other variables and then groups the variables accordingly.
+•	After this process has been done many times a pattern appears of relationships or factors that capture the essence of all of the data emerges.
+•	Summary: Factor analysis refers to a collection of statistical methods for reducing correlational data into a smaller number of dimensions or factors
+
+23.	What is ARIMA?
+
+•	Autoregressive moving average process (ARMA) model of a differenced time series (one that has been rendered stationary by the elimination of 'drift') whose output needs to be anti-differenced to forecast the original series are known as ARIMA models. ARIMA models can represent a wide range of time series data, and are used generally in computing the probability of a future value lying between any two limits.
+
+24.	What is seasonality? And how do you deal with seasonality effect?
+
+Seasonality is a characteristic of a time series in which the data experiences regular and predictable changes which recur every calendar year. Any predictable change or pattern in a time series that recurs or repeats over a one-year period can be said to be seasonal.
+Note that seasonal effects are different from cyclical effects, as seasonal cycles are contained within one calendar year, while cyclical effects (such as boosted sales due to low unemployment rates) can span time periods shorter or longer than one calendar year.
+
+To deal with seasonality- 
+
+25.	What are the methods do you use to calculate the seasonal indices?
+
+26.	What is importance of dummy variable? What is logic behind the no of dummy variable in the analysis?
+
+Dummy variables (also known as binary, indicator, dichotomous, discrete, or categorical variables) are a way of incorporating qualitative information into regression analysis. Qualitative data, unlike continuous data, tell us simply whether the individual observation belongs to a particular category. They indicate either the absence or presence of a characteristic or trait.
+
+The answer to "how many?" is r-1 where r = the number of categories in the categorical variable. Thus for gender (male - female) we would need only one dummy variable with a coding scheme of Xi=1 when the individual is male, and 0 when female. For another example, suppose you have a categorical variable with levels {Small,Medium,Large}. In this example, X1 is a dummy variable that has value 1 for the Medium group, and 0 otherwise. X2 is a dummy variable that has value 1 for the Large group, and 0 otherwise. Together, these two variables represent the three categories. Observations in the Small group have 0s for both dummy variables.
+The category represented by all 0s is the reference group. When you include the dummy variables in a regression model, the coefficients of the dummy variables are interpreted with respect to the reference group.
+
+
+27.	How do you compare the two samples to check whether there is any difference among them? What statistical Technique will you use?
+
+1.	Have you got more than two samples?
+No......go to 2
+Yes.....go to 8
+
+2. Have you got one or two samples?
+One.....Single sample t-test
+Two....go to 3
+
+3. Are your data sets normally distributed (K-S test or Shapiro-Wilke)?
+No.......go to 4
+Yes......go to 5
+
+4. Do your data sets have any factor in common (dependence), i.e. location or individuals?
+No.......Mann Whitney U test
+Yes......Wilcoxon Matched Pairs
+
+5. Do your data sets have any factor in common (dependence), i.e. location or individuals?
+No......go to 6
+Yes.....paired sample t-test
+
+6. Do your data sets have equal variances (f-test)?
+No......unequal variance t-test
+Yes.....go to 7
+
+7. Is n greater or less than 30?
+<30.....equal variance t-test or ANOVA
+>30.....z-test or ANOVA
+
+8. Are your samples normally distributed and with equal variances?
+No......Kruskal-Wallis non-parametric ANOVA
+Yes.....go to 9
+
+9. Does your data involve one factor or two factors?
+One.....One-way ANOVA (see also Multiple comparison tests)
+Two.....Two-way ANOVA (see also Multiple comparison tests)
+
+28.	Which technique will use to compare the two samples, if samples are having unequal sample sizes?
+For Unequal sample sizes, T-test can be used. The reason the t test can handle unequal sample sizes is that it takes account of the standard error of the estimates of the means for each group. That is the standard deviation of the group's distribution divided by the square root of the group's sample size. The group with the much larger sample size will have the smaller standard error if the population standard deviations are both equal or nearly so.
+Marketing mix modeling (MMM) is a term of art for the use of statistical analysis such as multivariate regressions on sales and marketing time series data to estimate the impact of various marketing tactics (marketing mix) on sales and then forecast the impact of future sets of tactics. It is often used to optimize advertising mix and promotional tactics with respect to sales revenue or profit.
+Marketing-mix models decompose total sales into two components:
+Base Sales: This is the natural demand for the product driven by economic factors like pricing, long-term trends, seasonality, and also qualitative factors like brand awareness and brand loyalty.
+Incremental Sales: Incremental sales are the component of sales driven by marketing and promotional activities. This component can be further decomposed into sales due to each marketing component like Television advertising or Radio advertising, Print Advertising (magazines, newspapers etc.), Coupons, Direct Mail, Internet, Feature or Display Promotions and Temporary Price Reductions. Some of these activities have short-term returns (Coupons, Promotions), while others have longer term returns (TV, Radio, Magazine/Print).
+Marketing-Mix analyses are typically carried out using Linear Regression Modeling. Nonlinear and lagged effects are included using techniques like Advertising Adstock transformations. Typical output of such analyses include a decomposition of total annual sales into contributions from each marketing component, a.k.a. Contribution pie-chart. Another standard output is a decomposition of year-over year sales growth/decline, a.k.a. ‘Due-to charts’.
+Market mix modeling can determine the sales impact generated by individual media such as television, magazine, and online display ads. In some cases it can be used to determine the impact of individual advertising campaigns or even ad executions upon sales. For example, for TV advertising activity, it is possible to examine how each ad execution has performed in the market in terms of its impact on sales volume. MMM can also provide information on TV effectiveness at different media weight levels, as measured by Gross Rating Points (GRP) in relation to sales volume response within a time frame, be it a week or a month. Information can also be gained on the minimum level of GRPs (threshold limit) in a week that need to be aired in order to make an impact, and conversely, the level of GRPs at which the impact on volume maximizes (saturation limit) and that the further activity does not have any payback. While not all MMM's will be able to produce definitive answers to all questions, some additional areas in which insights can sometimes be gained include: 1) the effectiveness of 15-second vis-à-vis 30-second executions; 2)comparisons in ad performance when run during prime-time vis-à-vis off-prime-time dayparts; 3) comparisons into the direct and the halo effect of TV activity across various products or sub-brands. The role of new product based TV activity and the equity based TV activity in growing the brand can also be compared
+Gross rating point (GRP) is a term used in advertising to measure the size of an audience reached by a specific media or schedule. Specifically, GRPs quantify impressions as a percentage of the population reached rather than in absolute numbers reached. Target rating points express the same concept, but with regard to a more narrowly defined target audience. GRPs are used predominantly as a measure of media with high potential exposures or impressions.
+The purpose of the GRP metric is to measure impressions in relation to the number of people in the audience for an advertising campaign. GRP values are commonly used by media buyers to compare the advertising strength of various media vehicles
+GRPs are the product of the percentage of the audience reached by an advertisement, times the frequency they see it in a given campaign (frequency × % reached).
+GRPs (%) = Reach (%) x Average frequency (#)
+For example, a television advertisement that is aired five times reaching 50% of the audience each time it is aired would have a GRP value of 250 (5 × 50%). To achieve a common denominator and compare media, reach x frequency are expressed over time (divided by time) to determine the 'weight' of a media campaign.
+Alternatively, GRPs may be calculated in relation to the number of impressions:
+GRPs (%) = 100 * Impressions (#) ÷ Defined population (#) 
+Before using PROC FASTCLUS, decide whether your variables should be standardized in some way, since variables with large variances tend to have more effect on the resulting clusters than those with small variances. If all variables are measured in the same units, standardization may not be necessary. Otherwise, some form of standardization is strongly recommended. The STANDARD procedure can standardize all variables to mean zero and variance one. The FACTOR or PRINCOMP procedures can compute standardized principal component scores. The ACECLUS procedure can transform the variables according to an estimated within-cluster covariance matrix
+Parametric versus Nonparametric Statistics – When to use them and which is more powerful?
+Parametric Assumptions:
+1.	The observations must be independent
+2.	The observations must be drawn from normally distributed populations
+3.	These populations must have the same variances
+4.	The means of these normal and homoscedastic populations must be linear combinations of effects due to columns and/or rows*
+ Nonparametric Assumptions:
+1.	Observations are independent
+2.	Variable under study has underlying continuity
+
+Advantages of Nonparametric Tests
+	Probability statements obtained from most nonparametric statistics are exact probabilities, regardless of the shape of the population distribution from which the random sample was drawn
+	If sample sizes as small as N=6 are used, there is no alternative to using a nonparametric test
+	Treat samples made up of observations from several different populations.
+	Can treat data which are inherently in ranks as well as data whose seemingly numerical scores have the strength in ranks
+	They are available to treat data which are classificatory
+	Easier to learn and apply than parametric tests
+Criticisms of Nonparametric Procedures
+	Losing precision/wasteful of data
+	Low power
+	False sense of security
+	Lack of software
+	Testing distributions only
+	Higher-ordered interactions not dealt with
+Power of a Test
+	Statistical power – probability of rejecting the null hypothesis when it is in fact false and should be rejected
+–	Power of parametric tests – calculated from formula, tables, and graphs based on their underlying distribution
+–	Power of nonparametric tests – less straightforward; calculated using Monte Carlo simulation methods (Mumby, 2002) 
+
+Differences between independent groups
+	Two samples – compare mean value for some variable of interest
+Parametric	Nonparametric
+t-test for independent samples	Wald-Wolfowitz runs test
+	Mann-Whitney U test
+	Kolmogorov-Smirnov two sample test
+
+Mann-Whitney U Test
+	Nonparametric alternative to two-sample t-test
+	Actual measurements not used – ranks of the measurements used
+	Data can be ranked from highest to lowest or lowest to highest values
+	Calculate Mann-Whitney U statistic
+	U = n1n2 + n1(n1+1) – R1
+                        	     2
+Example of Mann-Whitney U test
+	Two tailed null hypothesis that there is no difference between the heights of male and female students
+	Ho: Male and female students are the same height
+	HA: Male and female students are not the same height
+	
+
+There are two types of test data and consequently different types of analysis. As the table below shows, parametric data has an 
+underlying normal distribution which allows for more conclusions to be drawn as the shape can be mathematically described. Anything else is non-parametric.
+
+ 	Parametric	Non-parametric
+Assumed distribution	Normal
+Any
+Assumed variance	Homogeneous
+Any
+Typical data	Ratio or Interval
+Ordinal or Nominal
+
+Data set relationships	Independent	Any
+Usual central measure	Mean
+Median
+
+Benefits	Can draw more conclusions	Simplicity; Less affected by outliers
+Tests	 	 
+Choosing	Choosing parametric test
+Choosing a non-parametric test
+
+Correlation test	Pearson
+Spearman
+
+Independent measures, 2 groups	Independent-measures t-test
+Mann-Whitney test
+
+Independent measures, >2 groups	One-way, independent-measures ANOVA
+Kruskal-Wallis test
+Repeated measures, 2 conditions	Matched-pair t-test
+Wilcoxon test
+Repeated measures, >2 conditions	One-way, repeated measures ANOVA
+Friedman's test
+Parametric tests are either based on a normal distribution or on, e.g., t,t or χ2 distributions, which are related to and can be derived from normal-theory-based procedures. That is, the parametric tests require that a sample/group analyzed is taken from a population that meets the normality assumption Non-parametric tests are used when assumptions required by the parametric counterpart tests are not met or are questionable. All tests involving ranked data are non-parametric.
+
+ 	Type of Data
+Goal	Measurement (from Gaussian Population)	Rank, Score, or Measurement (from Non- Gaussian Population)	Binomial
+(Two Possible Outcomes)	Survival Time
+Describe one group	Mean, SD	Median, interquartile range	Proportion	Kaplan Meier survival curve
+Compare one group to a hypothetical value	One-sample ttest	Wilcoxon test	Chi-square
+or
+Binomial test **	 
+Compare two unpaired groups	Unpaired t test	Mann-Whitney test	Fisher's test
+(chi-square for large samples)	Log-rank test or Mantel-Haenszel*
+Compare two paired groups	Paired t test	Wilcoxon test	McNemar's test	Conditional proportional hazards regression*
+Compare three or more unmatched groups	One-way ANOVA	Kruskal-Wallis test	Chi-square test	Cox proportional hazard regression**
+Compare three or more matched groups	Repeated-measures ANOVA	Friedman test	Cochrane Q**	Conditional proportional hazards regression**
+Quantify association between two variables	Pearson correlation	Spearman correlation	Contingency coefficients**	 
+Predict value from another measured variable	Simple linear regression
+or
+Nonlinear regression	Nonparametric regression**	Simple logistic regression*	Cox proportional hazard regression*
+Predict value from several measured or binomial variables	Multiple linear regression*
+or
+Multiple nonlinear regression**	 	Multiple logistic regression*	Cox proportional hazard regression
+REVIEW OF NONPARAMETRIC TESTS
+Choosing the right test to compare measurements is a bit tricky, as you must choose between two families of tests: parametric and nonparametric. Many -statistical test are based upon the assumption that the data are sampled from a Gaussian distribution. These tests are referred to as parametric tests. Commonly used parametric tests are listed in the first column of the table and include the t test and analysis of variance.
+Tests that do not make assumptions about the population distribution are referred to as nonparametric- tests. You've already learned a bit about nonparametric tests in previous chapters. All commonly used nonparametric tests rank the outcome variable from low to high and then analyze the ranks. These tests are listed in the second column of the table and include the Wilcoxon, Mann-Whitney test, and Kruskal-Wallis tests. These tests are also called distribution-free tests.
+CHOOSING BETWEEN PARAMETRIC AND NONPARAMETRIC TESTS: THE EASY CASES
+Choosing between parametric and nonparametric tests is sometimes easy. You should definitely choose a parametric test if you are sure that your data are sampled from a population that follows a Gaussian distribution (at least approximately). You should definitely select a nonparametric test in three situations:
+•	The outcome is a rank or a score and the population is clearly not Gaussian. Examples include class ranking of students, the Apgar score for the health of newborn babies (measured on a scale of 0 to IO and where all scores are integers), the visual analogue score for pain (measured on a continuous scale where 0 is no pain and 10 is unbearable pain), and the star scale commonly used by movie and restaurant critics (* is OK, ***** is fantastic).
+•	Some values are "off the scale," that is, too high or too low to measure. Even if the population is Gaussian, it is impossible to analyze such data with a parametric test since you don't know all of the values. Using a nonparametric test with these data is simple. Assign values too low to measure an arbitrary very low value and assign values too high to measure an arbitrary very high value. Then perform a nonparametric test. Since the nonparametric test only knows about the relative ranks of the values, it won't matter that you didn't know all the values exactly.
+•	The data ire measurements, and you are sure that the population is not distributed in a Gaussian manner. If the data are not sampled from a Gaussian distribution, consider whether you can transformed the values to make the distribution become Gaussian. For example, you might take the logarithm or reciprocal of all values. There are often biological or chemical reasons (as well as statistical ones) for performing a particular transform.
+CHOOSING BETWEEN PARAMETRIC AND NONPARAMETRIC TESTS: THE HARD CASES
+It is not always easy to decide whether a sample comes from a Gaussian population. Consider these points:
+•	If you collect many data points (over a hundred or so), you can look at the distribution of data and it will be fairly obvious whether the distribution is approximately bell shaped. A formal statistical test (Kolmogorov-Smirnoff test, not explained in this book) can be used to test whether the distribution of the data differs significantly from a Gaussian distribution. With few data points, it is difficult to tell whether the data are Gaussian by inspection, and the formal test has little power to discriminate between Gaussian and non-Gaussian distributions.
+•	You should look at previous data as well. Remember, what matters is the distribution of the overall population, not the distribution of your sample. In deciding whether a population is Gaussian, look at all available data, not just data in the current experiment.
+•	Consider the source of scatter. When the scatter comes from the sum of numerous sources (with no one source contributing most of the scatter), you expect to find a roughly Gaussian distribution.
+•	When in doubt, some people choose a parametric test (because they aren't sure the Gaussian assumption is violated), and others choose a nonparametric test (because they aren't sure the Gaussian assumption is met).
+CHOOSING BETWEEN PARAMETRIC AND NONPARAMETRIC TESTS: DOES IT MATTER?
+Does it matter whether you choose a parametric or nonparametric test? The answer depends on sample size. There are four cases to think about:
+•	Large sample. What happens when you use a parametric test with data from a nongaussian population? The central limit theorem (discussed in Chapter 5) ensures that parametric tests work well with large samples even if the population is non-Gaussian. In other words, parametric tests are robust to deviations from Gaussian distributions, so long as the samples are large. The snag is that it is impossible to say how large is large enough, as it depends on the nature of the particular non-Gaussian distribution. Unless the population distribution is really weird, you are probably safe choosing a parametric test when there are at least two dozen data points in each group.
+•	Large sample. What happens when you use a nonparametric test with data from a Gaussian population? Nonparametric tests work well with large samples from Gaussian populations. The P values tend to be a bit too large, but the discrepancy is small. In other words, nonparametric tests are only slightly less powerful than parametric tests with large samples.
+•	Small samples. What happens when you use a parametric test with data from nongaussian populations? You can't rely on the central limit theorem, so the P value may be inaccurate.
+•	Small samples. When you use a nonparametric test with data from a Gaussian population, the P values tend to be too high. The nonparametric tests lack statistical power with small samples.
+Thus, large data sets present no problems. It is usually easy to tell if the data come from a Gaussian population, but it doesn't really matter because the nonparametric tests are so powerful and the parametric tests are so robust. Small data sets present a dilemma. It is difficult to tell if the data come from a Gaussian population, but it matters a lot. The nonparametric tests are not powerful and the parametric tests are not robust.
+ONE- OR TWO-SIDED P VALUE?
+With many tests, you must choose whether you wish to calculate a one- or two-sided P value (same as one- or two-tailed P value). The difference between one- and two-sided P values was discussed in Chapter 10. Let's review the difference in the context of a t test. The P value is calculated for the null hypothesis that the two population means are equal, and any discrepancy between the two sample means is due to chance. If this null hypothesis is true, the one-sided P value is the probability that two sample means would differ as much as was observed (or further) in the direction specified by the hypothesis just by chance, even though the means of the overall populations are actually equal. The two-sided P value also includes the probability that the sample means would differ that much in the opposite direction (i.e., the other group has the larger mean). The two-sided P value is twice the one-sided P value.
+A one-sided P value is appropriate when you can state with certainty (and before collecting any data) that there either will be no difference between the means or that the difference will go in a direction you can specify in advance (i.e., you have specified which group will have the larger mean). If you cannot specify the direction of any difference before collecting data, then a two-sided P value is more appropriate. If in doubt, select a two-sided P value.
+If you select a one-sided test, you should do so before collecting any data and you need to state the direction of your experimental hypothesis. If the data go the other way, you must be willing to attribute that difference (or association or correlation) to chance, no matter how striking the data. If you would be intrigued, even a little, by data that goes in the "wrong" direction, then you should use a two-sided P value. For reasons discussed in Chapter 10, I recommend that you always calculate a two-sided P value.
+PAIRED OR UNPAIRED TEST?
+When comparing two groups, you need to decide whether to use a paired test. When comparing three or more groups, the term paired is not apt and the term repeated measures is used instead.
+Use an unpaired test to compare groups when the individual values are not paired or matched with one another. Select a paired or repeated-measures test when values represent repeated measurements on one subject (before and after an intervention) or measurements on matched subjects. The paired or repeated-measures tests are also appropriate for repeated laboratory experiments run at different times, each with its own control.
+You should select a paired test when values in one group are more closely correlated with a specific value in the other group than with random values in the other group. It is only appropriate to select a paired test when the subjects were matched or paired before the data were collected. You cannot base the pairing on the data you are analyzing.
+FISHER'S TEST OR THE CHI-SQUARE TEST?
+When analyzing contingency tables with two rows and two columns, you can use either Fisher's exact test or the chi-square test. The Fisher's test is the best choice as it always gives the exact P value. The chi-square test is simpler to calculate but yields only an approximate P value. If a computer is doing the calculations, you should choose Fisher's test unless you prefer the familiarity of the chi-square test. You should definitely avoid the chi-square test when the numbers in the contingency table are very small (any number less than about six). When the numbers are larger, the P values reported by the chi-square and Fisher's test will he very similar.
+The chi-square test calculates approximate P values, and the Yates' continuity correction is designed to make the approximation better. Without the Yates' correction, the P values are too low. However, the correction goes too far, and the resulting P value is too high. Statisticians give different recommendations regarding Yates' correction. With large sample sizes, the Yates' correction makes little difference. If you select Fisher's test, the P value is exact and Yates' correction is not needed and is not available.
+REGRESSION OR CORRELATION?
+Linear regression and correlation are similar and easily confused. In some situations it makes sense to perform both calculations. Calculate linear correlation if you measured both X and Y in each subject and wish to quantity how well they are associated. Select the Pearson (parametric) correlation coefficient if you can assume that both X and Y are sampled from Gaussian populations. Otherwise choose the Spearman nonparametric correlation coefficient. Don't calculate the correlation coefficient (or its confidence interval) if you manipulated the X variable.
+Calculate linear regressions only if one of the variables (X) is likely to precede or cause the other variable (Y). Definitely choose linear regression if you manipulated the X variable. It makes a big difference which variable is called X and which is called Y, as linear regression calculations are not symmetrical with respect to X and Y. If you swap the two variables, you will obtain a different regression line. In contrast, linear correlation calculations are symmetrical with respect to X and Y. If you swap the labels X and Y, you will still get the same correlation coefficient.
+How to Determine The Probability Distribution Type for Your Data
+
+Read more: http://www.ehow.com/how_5596479_determine-probability-distribution-type-data.html#ixzz2XQUwL7fS
+When you have collected data on your system or process, the next step is to determine what type of probability distribution one has.
+•	Plot the data for a visual representation of the data type.
+•	One of the first steps to determining what data distribution one has - and thus the equation type to use to model the data - is to rule out what it cannot be.
+• If there are any peaks in the data set, it cannot be a discrete uniform distribution.
+• If the data has more than one peak, it is not Poisson or binomial.
+• If it has a single curve, no secondary peaks, and has a slow slope on each side, it may be Poisson or a gamma distribution. But it cannot be a discrete uniform distribution.
+• If the data is evenly distributed, and it is without a skew toward one side, it is safe to rule out a gamma or Weibull distribution.
+• If the function has an even distribution or a peak in the middle of the graphed results, it is not a geometric distribution or an exponential distribution.
+• If the occurrence of a factor varies with an environmental variable, it probably is not a Poisson distribution.
+•	 After the probability distribution type has been narrowed down, do an R squared analysis of each possible type of probability distribution. The one with the highest R squared value is most likely correct.
+•	Eliminate one outlier data point. Then recalculate R squared. If the same probability distribution type comes up as the closest match, then there is a high confidence that this is the correct probability distribution to use for the data set.
+•	The types of probability distributions are: discrete uniform, Bernoulli, binomial, negative binomial, Poisson, geometric, continuous uniform, normal (bell curve), exponential, gamma and beta distributions. Narrowing even a few from the list of possibilities makes determining which is the closest R squared value much faster.
+•	If the data shows multiple peaks a broad scatter, it is possible that two seperate processes are going on or the product being sampled is mixed. Recollect the data and then re-analyze.
+•	Validate the equations generated against later data sets to confirm that it is still accurate for the data set. It is possible that environmental factors and process drift have made current equations and models incorrect.
+
+What are T-Tests- Sometimes, we don’t just look at or describe one group of data. Instead, we want to look at two groups of data and compare them. We want to see if the two groups are different. T-tests are often used to compare the means from two different groups of data. They can help you find out if means are significantly different from one another or if they are relatively the same. If the means are significantly different, you can say that the variable being manipulated, your Independent Variable (IV), had an effect on the variable being measured, your Dependent Variable (DV). You will probably be asked to do two popular types of t-tests in SPSS so we will talk about each.
+Independent Samples T-Tests: These types of t-tests are used to compare groups of participants that are not related in any way. The groups are independent from one another. So, participants in one group have no relationship to participants in the second group. This is sometimes called a between subjects design.
+Paired Samples T-Tests-  These types of tests are used to compare groups that are related in some way. There are so many ways that participants in two groups can be related. One way is that participants in the first group are the same as participants in the second group. This is sometimes called a repeated measures design. A second way is that participants in the first group are genetically related to participants in the second group. 
+For example, a pair of twins could be divided up so one twin participated with the first group and the other twin participated with the second group. A third way is if participants in one group are matched with participants in a second group by some attribute. 
+For example, if a participant in the first group rates high on depression, researchers might try to find a participant in the second group that also rates high on depression.
+An ANOVA is an analysis of the variation present in an experiment. It is a test of the hypothesis that the variation in an experiment is no greater than that due to normal variation of individuals' characteristics and error in their measurement. With ANOVA, we analyze and compare the variability of scores between conditions and within conditions. This helps us find out if the IV had a significant effect on the DV
+The tests in an ANOVA are based on the F-ratio: the variation due to an experimental treatment or effect divided by the variation due to experimental error. The null hypothesis is this ratio equals 1.0, or the treatment effect is the same as the experimental error. This hypothesis is rejected if the F-ratio is significantly large enough that the possibility of it equaling 1.0 is smaller than some pre-assigned criteria such as 0.05 (one in twenty).
+Sometimes, we want to look at more than two groups of data and compare them. We want to see if more than two groups of data are different. While we could use T-tests to compare the means from two different groups of data, but we need a different kind of test when comparing three or more groups.
+ We can use a 1-Way ANOVA test to compare three or more groups or conditions in an experiment. A 1-Way ANOVA can help you find out if the means for each group / condition are significantly different from one another or if they are relatively the same. If the means are significantly different, you can say that the variable being manipulated, your Independent Variable (IV), had an effect on the variable being measured, your Dependent Variable (DV). You will probably be asked to do two popular types of 1-Way ANOVA tests in SPSS so we will talk about each.
+The one-way ANOVA compares the means between the groups you are interested in and determines whether any of those means are significantly different from each other. Specifically, it tests the null hypothesis: 
+where µ = group mean and k = number of groups. If, however, the one-way ANOVA returns a significant result, we accept the alternative hypothesis (HA), which is that there are at least 2 group means that are significantly different from each other.
+At this point, it is important to realise that the one-way ANOVA is an omnibus test statistic and cannot tell you which specific groups were significantly different from each other, only that at least two groups were. To determine which specific groups differed from each other, you need to use a post-hoc test. Post-hoc tests are described later in this guide
+1-Way Between Subjects ANOVA: This type of test is used to compare more three or more groups of participants that are not related in any way. The groups of participants are independent from one another. So, participants in one group have no relationship to participants in the other groups.
+http://statistics-help-for-students.com/ 
+1-Way Within Subjects ANOVA : This type of test used to compare three or more groups of participants that are related in some way. There are so many ways that participants in three or more groups can be related. One of the most common ways is that participants in the first group are the same as participants in the other groups. This is called a repeated measures design. For this reason, some people call the 1-Way Within Subjects ANOVA a 1-Way Repeated Measures ANOVA.
+ A second way is that participants in the first group are genetically related to participants in the other groups. For example, a pair of triplets could be divided up so one triplet participated with the first group, a second triplet participated with the second group and a third triplet participate with a third group. A third way is if participants in one group are matched with participants in the other groups by some attribute. For example, if a participant in the first group rates low on intelligence, researchers might try to find a participant for each of the other groups who also rates low on intelligence
+Why not compare groups with multiple t-tests?
+Every time you conduct a t-test there is a chance that you will make a Type 1 error. This error is usually 5%. Therefore, by running two t-tests on the same data you will have increased your chance of "making a mistake" to 10%. Three t-tests would be 15% and so on. These are unacceptable errors. An ANOVA controls for these errors so that the Type 1 error remains at 5% and you can be more confident that any significant result you find is not just down to chance. See our guide on hypothesis testing for more information on Type I errors.
+What assumptions does the test make?
+There are three main assumptions, listed here:
+The dependent variable is normally distributed in each group that is being compared in the one-way ANOVA. So, for example, if we were comparing three groups (e.g., amateur, semi-professional and professional rugby players) on their leg strength, their leg strength values (dependent variable) would have to be normally distributed for the amateur group of players, normally distributed for the semi-professionals and normally distributed for the professional players. You can test for normality in SPSS (see our guide here).
+There is homogeneity of variances. This means that the population variances in each group are equal. If you use SPSS, Levene's Test for Homogeneity of Variances is included in the output when you run a one-way ANOVA in SPSS (see our One-way ANOVA using SPSS guide).
+What happens if my data fail these assumptions?
+Firstly, don't panic! The first two of these assumptions are easily fixable, even if the last assumption is not. Lets go through the options as above:
+1.	The one-way ANOVA is considered a robust test against the normality assumption. This means that it tolerates violations to its normality assumption rather well. As regards the normality of group data, the one-way ANOVA can tolerate data that is non-normal (skewed or kurtotic distributions) with only a small effect on the Type I error rate. However, platykurtosis can have a profound effect when your group sizes are small. This leaves you with two options: (1) transform your data using various algorithms so that the shape of your distributions become normally distributed or (2) choose the non-parametric Kruskal-Wallis H Test which does not require the assumption of normality.
+2.	There are two tests that you can run that are applicable when the assumption of homogeneity of variances has been violated: (1) Welch or (2) Brown and Forsythe test. Alternatively, you could run a Kruskal-Wallis H Test. For most situations it has been shown that the Welsh test is best. Both the Welch and Brown and Forsythe tests are available in SPSS (see our One-way ANOVA using SPSS guide).
+3.	A lack of independence of cases has been stated as the most important assumptions to fail. Often, there is little you can do that offers a good solution to this problem. A full explanation of this problem and all assumptions mentioned here, including numerical explanations
+My p-value is greater than 0.05, what do I do now?	Report the result of the one-way ANOVA (e.g., "There were no statistically significant differences between group means as determined by one-way ANOVA (F(2,27) = 1.397, p = .15)"). Not achieving a statistically significant result does not mean you should not report group means +/- SD also. However, running post-hoc tests is not warranted and should not be carried out.
+
+My p-value is less than 0.05, what do I do now?	Firstly, you need to report your results as highlighted in the "How do I report the results?" section above. You then need to follow-up the one-way ANOVA by running post-hoc tests.
+
+Homogeneity of variances was violated. How do I continue?		You need to perform the same procedures as in the above three sections, but add into your results section that this assumption was violated and you needed to run a Welch F test.
+
+What are post-hoc tests?	Recall from earlier that the ANOVA test tells you whether you have an overall difference between your groups, but it does not tell you which specific groups differed - post-hoc tests do. Because post-hoc tests are run to confirm where the differences occurred between groups, they should only be run when you have a shown an overall significant difference in group means (i.e., a significant one-way ANOVA result). Post-hoc tests attempt to control the experimentwise error rate (usually alpha = 0.05) in the same manner that the one-way ANOVA is used, instead of multiple t-tests. Post-hoc tests are termed a posteriori tests; that is, performed after the event (the event in this case being a study).
+
+Which post-hoc test should I use?
+There are a great number of different post-hoc tests that you can use. However, you should only run one post-hoc test - do not run multiple post-hoc tests. For a one-way ANOVA, you will probably find that just one of four tests need to be considered. If your data meet the assumption of homogeneity of variances, either use the Tukey's honestly significant difference (HSD) or Scheffé post-hoc tests. Often, Tukey's HSD test is recommended by statisticians because it is not as conservative as the Scheffe test (which means that you are more likely to detect differences if they exist with Tukey's HSD test). Note that if you use SPSS, Tukey's HSD test is simply referred to as "Tukey" in the post-hoc multiple comparisons dialogue box). If your data did not meet the homogeneity of variances assumption, you should consider running either the Games Howell or Dunnett's C post-hoc test. The Games Howell test is generally recommended.
+
+ANOVA Models
+There are four types of ANOVA models. Following are descriptions and examples of each.
+One-way between groups ANOVA. A one-way between groups ANOVA is used when you want to test the difference between two or more groups. This is the simplest version of ANOVA. The example of education level among different sports teams above would be an example of this type of model. There is only one grouping (type of sport played) that you are using to define the groups.
+One-way repeated measures ANOVA. A one-way repeated measures ANOVA is used when you have a single group on which you have measured something more than one time. For example, if you wanted to test students’ understanding of a subject, you could administer the same test at the beginning of the course, in the middle of the course, and at the end of the course. You would then use a one-way repeated measures ANOVA to see if students’ performance on the test changed over time.
+Two-way between groups ANOVA. A two-way between groups ANOVA is used to look at complex groupings. For example, the students’ grades in the previous example could be extended to see if students abroad performed differently to local students. So you would have three effects from this ANOVA: the effect of the final grade, the effect of abroad versus local, and the interaction between the final grade and overseas/local. Each of the main effects are one-way tests. The interaction effect is simply asking if there is any significant difference in performance when you test he final grade and overseas/local acting together.
+Two-way repeated measures ANOVA. Two-way repeated measures ANOVA uses the repeated measures structure but also includes an interaction effect. Using the same example of one-way repeated measures (test grades before and after a course), you could add gender to see if there is any joint effect of gender and time of testing. That is, do males and females differ in the amount of information they remember over time?
+Assumptions of ANOVA
+The following assumptions exist when you perform an analysis of variance:
+•	The expected values of the errors are zero.
+•	The variances of all errors are equal to each other.
+•	The errors are independent from one another.
+•	The errors are normally distributed.
+How an ANOVA is Done
+•	The mean is calculated for each of your groups. Using the example of education and sports teams from the introduction in the first paragraph above, the mean education level is calculated for each sports team.
+•	The overall mean is then calculated for all of the groups combined.
+•	Within each group, the total deviation of each individual’s score from the group mean is calculated. This is called within group variation.
+•	Next, the deviation of each group mean from the overall mean is calculated. This is callbetween group variation.
+•	Finally, an F statistic is calculated, which is the ratio of between group variation to the within group variation.
+If the between group variation is significantly greater than the within group variation, then it is likely that there is a statistically significant difference between the groups. The statistical software that you use will tell you if the F statistic is significant or not.
+All versions of ANOVA follow the basic principles outlined above, but as the number of groups and the interaction effects increase, the sources of variation will get more complex
+
